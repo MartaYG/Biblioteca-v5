@@ -13,9 +13,9 @@ import org.iesalandalus.programacion.biblioteca.mvc.modelo.dominio.Prestamo;
 import org.iesalandalus.programacion.biblioteca.mvc.modelo.negocio.IAlumnos;
 import org.iesalandalus.programacion.biblioteca.mvc.modelo.negocio.ILibros;
 import org.iesalandalus.programacion.biblioteca.mvc.modelo.negocio.IPrestamos;
-import org.iesalandalus.programacion.biblioteca.mvc.modelo.negocio.memoria.Alumnos;
-import org.iesalandalus.programacion.biblioteca.mvc.modelo.negocio.memoria.Libros;
-import org.iesalandalus.programacion.biblioteca.mvc.modelo.negocio.memoria.Prestamos;
+import org.iesalandalus.programacion.biblioteca.mvc.modelo.negocio.ficheros.Alumnos;
+import org.iesalandalus.programacion.biblioteca.mvc.modelo.negocio.ficheros.Libros;
+import org.iesalandalus.programacion.biblioteca.mvc.modelo.negocio.ficheros.Prestamos;
 
 public class Modelo implements IModelo {
 
