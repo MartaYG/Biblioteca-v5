@@ -1,5 +1,13 @@
 package org.iesalandalus.programacion.biblioteca.mvc.modelo.negocio.ficheros;
 
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -18,10 +26,83 @@ import org.iesalandalus.programacion.biblioteca.mvc.modelo.negocio.IPrestamos;
 public class Prestamos implements IPrestamos {
 
 	List<Prestamo> coleccionPrestamos;
+	private static final String NOMBRE_FICHERO_PRESTAMOS="datos/prestamos.dat";
 
 	public Prestamos() {
 
 		coleccionPrestamos = new ArrayList<>();
+	}
+	
+	@Override
+	public void comenzar() {
+		
+		leer();
+	}
+	
+	private void leer() {
+		
+		File ficheroPrestamos = new File(NOMBRE_FICHERO_PRESTAMOS);
+		
+		try(ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(ficheroPrestamos))){
+			
+			Prestamo prestamo = null;
+			
+			do {
+				
+				prestamo =(Prestamo) entrada.readObject();
+				prestar(prestamo);
+						
+			}while(prestamo !=null);
+			
+		} catch (FileNotFoundException e) {
+			
+			System.out.println("No puedo abrir el fichero de prestamos.");
+			
+		} catch(EOFException e) {
+			
+			System.out.println("Fichero prestamos leído satisfactoriamente.");
+			
+		} catch (IOException e) {
+			
+			System.out.println("Error inesperado de Entrada/Salida.");
+			
+		} catch (ClassNotFoundException e) {
+			
+			System.out.println("No puedo encontrar la clase que tengo que leer.");
+			
+		} catch (OperationNotSupportedException e) {
+			
+			System.out.println(e.getMessage());
+		} 
+	}
+	
+	@Override
+	public void terminar() {
+		
+		escribir();
+	}
+	
+	private void escribir() {
+		
+		File ficheroPrestamos = new File(NOMBRE_FICHERO_PRESTAMOS);
+		
+		try(ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(ficheroPrestamos))){
+			
+			for(Prestamo prestamo : coleccionPrestamos) {
+				
+				salida.writeObject(prestamo);
+			}
+			
+			System.out.println("Fichero prestamos escrito satisfactoriamente.");
+
+		} catch (FileNotFoundException e) {
+			
+			System.out.println("No puedo crear el fichero de prestamos.");
+			
+		} catch (IOException e) {
+			
+			System.out.println("Error inesperado de Entrada/Salida.");
+		}
 	}
 
 	@Override
