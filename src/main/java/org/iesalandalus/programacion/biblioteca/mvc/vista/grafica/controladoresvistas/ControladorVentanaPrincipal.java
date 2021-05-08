@@ -113,6 +113,13 @@ public class ControladorVentanaPrincipal {
 		tcLpFechaPrestamo.setCellValueFactory(prestamo -> new SimpleStringProperty(FORMATO_FECHA.format(prestamo.getValue().getFechaPrestamo())));
 		tcLpFechaDevolucion.setCellValueFactory(prestamo -> new SimpleStringProperty(mostrarFechaDevolucion(prestamo.getValue())));
 		tcLpPuntos.setCellValueFactory(new PropertyValueFactory<>(PUNTOS));	
+		
+		tcPAlumno.setCellValueFactory(prestamo -> new SimpleStringProperty(prestamo.getValue().getAlumno().getCorreo()));
+		tcPLibro.setCellValueFactory(prestamo -> new SimpleStringProperty(prestamo.getValue().getLibro().getTitulo() + ", " + prestamo.getValue().getLibro().getAutor()));
+		tcPFechaPrestamo.setCellValueFactory(prestamo -> new SimpleStringProperty(FORMATO_FECHA.format(prestamo.getValue().getFechaPrestamo())));
+		tcPFechaDevolucion.setCellValueFactory(prestamo -> new SimpleStringProperty(mostrarFechaDevolucion(prestamo.getValue())));
+		tcPPuntos.setCellValueFactory(new PropertyValueFactory<>(PUNTOS));
+		tvPrestamos.setItems(prestamos);
 	}
 	
 	@FXML
@@ -195,6 +202,41 @@ public class ControladorVentanaPrincipal {
 		} else {
 
 			controladorInsertarLibro.inicializa();
+		}
+	}
+	
+	@FXML
+	void realizarPrestamo(ActionEvent event) throws IOException {
+
+		crearRealizarPrestamo();
+		prestarLibro.showAndWait();
+	}
+
+	private void crearRealizarPrestamo() throws IOException {
+
+		if (prestarLibro == null) {
+
+			prestarLibro = new Stage();
+			FXMLLoader cargarRealizarPrestamo = new FXMLLoader(
+					LocalizadorRecursos.class.getResource("vistas/RealizarPrestamo.fxml"));
+
+			VBox raizRealizarPrestamo = cargarRealizarPrestamo.load();
+			controladorRealizarPrestamo = cargarRealizarPrestamo.getController();
+			controladorRealizarPrestamo.setControladorMVC(controladorMVC);
+			controladorRealizarPrestamo.setLibros(libros);
+			controladorRealizarPrestamo.setAlumnos(alumnos);
+			controladorRealizarPrestamo.setPrestamos(prestamos);
+
+			Scene escenaRealizarPrestamo = new Scene(raizRealizarPrestamo);
+			prestarLibro.setTitle("Realizar Préstamo");
+			prestarLibro.initModality(Modality.APPLICATION_MODAL);
+			prestarLibro.setScene(escenaRealizarPrestamo);
+
+			controladorRealizarPrestamo.inicializa();
+
+		} else {
+
+			controladorRealizarPrestamo.inicializa();
 		}
 	}
 	
@@ -356,6 +398,47 @@ public class ControladorVentanaPrincipal {
 		}
 	}
 
+	@FXML
+	void realizarDevolucion(ActionEvent event) throws IOException {
+
+		if (tvPrestamos.getSelectionModel().getSelectedItem() == null) {
+
+			Dialogos.mostrarDialogoError("Realizar Devolución", "No se ha seleccionado ningún préstamo");
+
+		} else {
+
+			crearRealizarDevolucion();
+			devolverLibro.showAndWait();
+		}
+	}
+
+	private void crearRealizarDevolucion() throws IOException {
+
+		if (devolverLibro == null) {
+
+			devolverLibro = new Stage();
+			FXMLLoader cargarRealizarDevolucion = new FXMLLoader(
+					LocalizadorRecursos.class.getResource("vistas/RealizarDevolucion.fxml"));
+
+			VBox raizRealizarDevolucion = cargarRealizarDevolucion.load();
+			controladorRealizarDevolucion = cargarRealizarDevolucion.getController();
+			controladorRealizarDevolucion.setControladorMVC(controladorMVC);
+			controladorRealizarDevolucion.setControladorVentanaPrincipal(this);
+			controladorRealizarDevolucion.setPrestamo(tvPrestamos.getSelectionModel().getSelectedItem());
+
+			Scene escenaRealizarDevolucion = new Scene(raizRealizarDevolucion);
+			devolverLibro.setTitle("Realizar Devolución");
+			devolverLibro.initModality(Modality.APPLICATION_MODAL);
+			devolverLibro.setScene(escenaRealizarDevolucion);
+
+			controladorRealizarDevolucion.inicializa();
+
+		} else {
+
+			controladorRealizarDevolucion.setPrestamo(tvPrestamos.getSelectionModel().getSelectedItem());
+			controladorRealizarDevolucion.inicializa();
+		}
+	}
 	
 	@FXML
 	void eliminarAlumno(ActionEvent event) throws IOException {
@@ -441,6 +524,32 @@ public class ControladorVentanaPrincipal {
 		try {
 			
 			prestamo = tvLibrosPrestados.getSelectionModel().getSelectedItem();
+
+			if (prestamo != null && Dialogos.mostrarDialogoConfirmacion("Anular Préstamo",
+					"¿Estás seguro que desea anular el préstamo?", null)) {
+
+				controladorMVC.borrar(prestamo);
+				prestamos.remove(prestamo);
+				actualizarPrestamos();
+				actualizarAlumnos();
+				actualizarLibros();
+				Dialogos.mostrarDialogoInformacion("Anular Préstamo", "Préstamo anulado correctamente");
+			}
+
+		} catch (Exception e) {
+
+			Dialogos.mostrarDialogoError("Anular Préstamo", e.getMessage());
+		}
+	}
+	
+	@FXML
+	void anularPrestamo(ActionEvent event) throws IOException {
+
+		Prestamo prestamo = null;
+
+		try {
+			
+			prestamo = tvPrestamos.getSelectionModel().getSelectedItem();
 
 			if (prestamo != null && Dialogos.mostrarDialogoConfirmacion("Anular Préstamo",
 					"¿Estás seguro que desea anular el préstamo?", null)) {
