@@ -238,7 +238,7 @@ public class VistaTexto implements IVista {
 		try {
 
 			controlador.devolver(Consola.leerPrestamoFicticio(),
-					Consola.leerFecha("Introduce la fecha del prestamo: "));
+					Consola.leerFecha("Introduce la fecha de devolución: "));
 			System.out.println("el Libro ha sido devuelto correctamente.");
 
 		} catch (NullPointerException | IllegalArgumentException | OperationNotSupportedException e) {
