@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="455.0" stylesheets="@../estilos/estilos.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.iesalandalus.programacion.biblioteca.mvc.vista.grafica.controladoresvistas.ControladorRealizarPrestamo">
+   <children>
+      <HBox prefHeight="114.0" prefWidth="455.0">
+         <children>
+            <Label alignment="TOP_RIGHT" contentDisplay="CENTER" prefHeight="41.0" prefWidth="92.0" text="Alumno">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets right="10.0" top="20.0" />
+               </HBox.margin>
+            </Label>
+            <ListView fx:id="lvAlumno" prefHeight="97.0" prefWidth="335.0">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </ListView>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+      <HBox prefHeight="124.0" prefWidth="455.0">
+         <children>
+            <Label alignment="TOP_RIGHT" contentDisplay="TOP" prefHeight="41.0" prefWidth="94.0" text="Libro">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets right="10.0" top="20.0" />
+               </HBox.margin>
+            </Label>
+            <ListView fx:id="lvLibro" prefHeight="107.0" prefWidth="335.0">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </ListView>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+      <HBox layoutX="10.0" layoutY="133.0" prefHeight="62.0" prefWidth="338.0">
+         <children>
+            <Label alignment="TOP_RIGHT" contentDisplay="TOP" prefHeight="41.0" prefWidth="137.0" text="Fecha Préstamo">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets right="10.0" top="20.0" />
+               </HBox.margin>
+            </Label>
+            <DatePicker fx:id="dpFechaPrestamo">
+               <HBox.margin>
+                  <Insets left="5.0" top="25.0" />
+               </HBox.margin>
+            </DatePicker>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+      <HBox prefHeight="125.0" prefWidth="455.0">
+         <children>
+            <Button fx:id="bAceptar" mnemonicParsing="false" onAction="#aceptar" prefHeight="31.0" prefWidth="111.0" text="Aceptar">
+               <padding>
+                  <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets left="50.0" top="50.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="bCancelar" mnemonicParsing="false" onAction="#cancelar" prefHeight="31.0" prefWidth="111.0" text="Cancelar">
+               <HBox.margin>
+                  <Insets left="130.0" right="40.0" top="50.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+               </padding>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</VBox>

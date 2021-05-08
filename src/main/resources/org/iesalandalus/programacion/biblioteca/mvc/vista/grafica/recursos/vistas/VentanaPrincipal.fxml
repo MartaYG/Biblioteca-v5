@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="808.0" stylesheets="@../estilos/estilos.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.iesalandalus.programacion.biblioteca.mvc.vista.grafica.controladoresvistas.ControladorVentanaPrincipal">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="Archivo">
+            <items>
+              <MenuItem fx:id="bSalir" mnemonicParsing="false" onAction="#salir" text="salir" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Ayuda">
+            <items>
+              <MenuItem fx:id="bAcercaDe" mnemonicParsing="false" onAction="#acercaDe" text="Acerca de..." />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="587.0" prefWidth="809.0">
+         <children>
+            <TabPane prefHeight="587.0" prefWidth="807.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Alumnos">
+                     <content>
+                        <VBox alignment="TOP_CENTER" prefHeight="548.0" prefWidth="709.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-size: 30;" text="Alumnos" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" top="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TableView fx:id="tvAlumnos" prefHeight="200.0" prefWidth="200.0">
+                                <columns>
+                                  <TableColumn fx:id="tcANombre" prefWidth="295.0" text="Nombre" />
+                                  <TableColumn fx:id="tcACorreo" prefWidth="418.0" text="Correo " />
+                                    <TableColumn fx:id="tcACurso" prefWidth="93.0" text="Curso" />
+                                </columns>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#insertarAlumno" text="Insertar Alumno" />
+                                          <MenuItem mnemonicParsing="false" onAction="#eliminarAlumno" text="Eliminar Alumno" />
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </TableView>
+                              <Label alignment="CENTER" prefHeight="51.0" prefWidth="236.0" style="-fx-font-size: 20;" text="Préstamos del Alumno">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TableView fx:id="tvPrestamoAlumno" prefHeight="200.0" prefWidth="679.0">
+                                <columns>
+                                  <TableColumn fx:id="tcPaLibro" prefWidth="246.0" text="Libro" />
+                                  <TableColumn fx:id="tcPaFechaPrestamo" prefWidth="247.0" text="Fecha Préstamo" />
+                                    <TableColumn fx:id="tcPaFechaDevolucion" prefWidth="214.0" text="Fecha Devolución" />
+                                    <TableColumn fx:id="tcPaPuntos" prefWidth="99.0" text="Puntos" />
+                                </columns>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                       <items>
+                                          <MenuItem mnemonicParsing="false" onAction="#realizarPrestamoAlumno" text="Realizar Prestamo" />
+                                          <MenuItem mnemonicParsing="false" onAction="#realizarDevolucionAlumno" text="Realizar Devolución" />
+                                          <MenuItem mnemonicParsing="false" onAction="#anularPrestamoAlumno" text="Anular Prestamo" />
+                                       </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </TableView>
+                           </children>
+                        </VBox>
+                     </content>
+                  </Tab>
+                <Tab text="Libros">
+                     <content>
+                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-size: 30;" text="Libros">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" top="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TableView fx:id="tvLibros" prefHeight="191.0" prefWidth="807.0">
+                                 <columns>
+                                    <TableColumn fx:id="tcLTitulo" prefWidth="307.0" text="Título" />
+                                    <TableColumn fx:id="tcLAutor" prefWidth="264.0" text="Autor" />
+                                    <TableColumn fx:id="tcLNumPaginasDuracion" prefWidth="235.0" text="Número de páginas o Duración" />
+                                 </columns>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#insertarLibro" text="Insertar Libro" />
+                                          <MenuItem mnemonicParsing="false" onAction="#eliminarLibro" text="Eliminar Libro" />
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </TableView>
+                              <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-size: 20;" text="Libros Prestados">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" top="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TableView fx:id="tvLibrosPrestados" prefHeight="183.0" prefWidth="821.0">
+                                 <columns>
+                                    <TableColumn fx:id="tcLpAlumno" prefWidth="255.0" text="Alumno" />
+                                    <TableColumn fx:id="tcLpFechaPrestamo" prefWidth="238.0" text="Fecha Préstamo" />
+                                    <TableColumn fx:id="tcLpFechaDevolucion" prefWidth="206.0" text="Fecha Devolución" />
+                                    <TableColumn fx:id="tcLpPuntos" prefWidth="106.0" text="Puntos" />
+                                 </columns>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                       <items>
+                                          <MenuItem mnemonicParsing="false" onAction="#realizarPrestamoLibro" text="Realizar Prestamo" />
+                                          <MenuItem mnemonicParsing="false" onAction="#realizarDevolucionLibro" text="Realizar Devolución" />
+                                          <MenuItem mnemonicParsing="false" onAction="#anularPrestamoLibro" text="Anular Prestamo" />
+                                       </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </TableView>
+                           </children>
+                        </VBox>
+                     </content></Tab>
+                  <Tab text="Préstamos">
+                     <content>
+                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-size: 30;" text="Préstamos">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" top="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TableView fx:id="tvPrestamos" prefHeight="495.0" prefWidth="807.0">
+                                 <columns>
+                                    <TableColumn fx:id="tcPAlumno" prefWidth="191.0" text="Alumno" />
+                                    <TableColumn fx:id="tcPLibro" prefWidth="192.0" text="Libro" />
+                                    <TableColumn fx:id="tcPFechaPrestamo" prefWidth="178.0" text="Fecha Préstamo" />
+                                    <TableColumn fx:id="tcPFechaDevolucion" prefWidth="158.0" text="Fecha Devolución" />
+                                    <TableColumn fx:id="tcPPuntos" prefWidth="87.0" text="Puntos" />
+                                 </columns>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#realizarPrestamo" text="Realizar Prestamo" />
+                                          <MenuItem mnemonicParsing="false" onAction="#realizarDevolucion" text="Realizar Devolución" />
+                                          <MenuItem mnemonicParsing="false" onAction="#anularPrestamo" text="Anular Prestamo" />
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </TableView>
+                           </children>
+                        </VBox>
+                     </content></Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </HBox>
+   </children>
+</VBox>

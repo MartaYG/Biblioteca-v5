@@ -1,0 +1,38 @@
+* {
+	-fx-font: 14 arial;
+	-fx-base: #d3b0de;
+}
+
+.tab {
+	-fx-padding: 20 20 20 20;
+}
+
+.tab:selected .focus-indicator{
+	-fx-border-color: transparent;
+}
+
+.vbox {
+	-fx-background-color: #d3b0de;
+}
+
+.menu-item, .context-menu {
+	-fx-background-color: #d3b0de;
+}
+
+.menu-item:hover {
+	-fx-background-color: #8f46b4;
+}
+
+.button {
+	-fx-background-radius: 10;
+}
+
+ #bAceptar {
+	-fx-font: 22 "arial";
+	-fx-base: #22d45c;
+}
+
+#bCancelar {
+	-fx-font: 20 "arial";
+	-fx-base: #d42234;
+}
