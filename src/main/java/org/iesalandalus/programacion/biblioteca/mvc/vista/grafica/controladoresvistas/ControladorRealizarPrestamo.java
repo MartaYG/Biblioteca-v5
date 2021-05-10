@@ -25,6 +25,7 @@ import javafx.stage.Stage;
 public class ControladorRealizarPrestamo {
 	
 	private IControlador controladorMVC;
+	private ControladorVentanaPrincipal controladorVentanaPrincipal;
 	private ObservableList<Prestamo> prestamos = FXCollections.observableArrayList();
 	private ObservableList<Alumno> alumnos = FXCollections.observableArrayList();
 	private ObservableList<Libro> libros = FXCollections.observableArrayList();
@@ -99,6 +100,11 @@ public class ControladorRealizarPrestamo {
 
 		this.prestamos.setAll(prestamos);
 	}
+	
+	public void setControladorVentanaPrincipal(ControladorVentanaPrincipal controladorVentanaPrincipal) {
+		
+		this.controladorVentanaPrincipal=controladorVentanaPrincipal;
+	}
 
 	private Prestamo getPrestamo() {
 
@@ -122,6 +128,10 @@ public class ControladorRealizarPrestamo {
 			prestamos.setAll(controladorMVC.getPrestamos());
 			ventana = ((Stage) bAceptar.getScene().getWindow());
 			Dialogos.mostrarDialogoInformacion("Añadir Préstamo", "Préstamo realizado Correctamente", ventana);
+			
+			controladorVentanaPrincipal.actualizarAlumnos();
+			controladorVentanaPrincipal.actualizarLibros();
+			controladorVentanaPrincipal.actualizarPrestamos();
 
 			inicializa();
 			ventana.close();

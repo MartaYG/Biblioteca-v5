@@ -52,9 +52,13 @@ public class ControladorRealizarDevolucion {
 			
 			controladorMVC.devolver(prestamo, dpFechaDevolucion.getValue());
 			controladorVentanaPrincipal.actualizarPrestamos();
+			controladorVentanaPrincipal.actualizarAlumnos();
+			controladorVentanaPrincipal.actualizarLibros();
 
 			ventana = ((Stage) bAceptar.getScene().getWindow());
 			Dialogos.mostrarDialogoInformacion("Realizar Devolución", "Devolución realizada Correctamente", ventana);
+			
+			
 
 			inicializa();
 			ventana.close();

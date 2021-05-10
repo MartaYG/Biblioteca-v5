@@ -169,6 +169,7 @@ public class ControladorVentanaPrincipal {
 		} else {
 
 			controladorInsertarAlumno.inicializa();
+			controladorInsertarAlumno.setAlumnos(alumnos);
 		}
 	}
 	
@@ -202,6 +203,8 @@ public class ControladorVentanaPrincipal {
 		} else {
 
 			controladorInsertarLibro.inicializa();
+			controladorInsertarLibro.setLibros(libros);
+
 		}
 	}
 	
@@ -226,6 +229,7 @@ public class ControladorVentanaPrincipal {
 			controladorRealizarPrestamo.setLibros(libros);
 			controladorRealizarPrestamo.setAlumnos(alumnos);
 			controladorRealizarPrestamo.setPrestamos(prestamos);
+			controladorRealizarPrestamo.setControladorVentanaPrincipal(this);
 
 			Scene escenaRealizarPrestamo = new Scene(raizRealizarPrestamo);
 			prestarLibro.setTitle("Realizar Préstamo");
@@ -237,6 +241,9 @@ public class ControladorVentanaPrincipal {
 		} else {
 
 			controladorRealizarPrestamo.inicializa();
+			controladorRealizarPrestamo.setLibros(libros);
+			controladorRealizarPrestamo.setAlumnos(alumnos);
+			controladorRealizarPrestamo.setPrestamos(prestamos);
 		}
 	}
 	
@@ -262,6 +269,7 @@ public class ControladorVentanaPrincipal {
 			controladorRealizarPrestamo.setAlumnos(alumnos);
 			controladorRealizarPrestamo.setPrestamos(prestamos);
 			controladorRealizarPrestamo.seleccionarAlumno(tvAlumnos.getSelectionModel().getSelectedItem());
+			controladorRealizarPrestamo.setControladorVentanaPrincipal(this);
 
 			Scene escenaRealizarPrestamo = new Scene(raizRealizarPrestamo);
 			prestarLibro.setTitle("Realizar Préstamo");
@@ -273,7 +281,11 @@ public class ControladorVentanaPrincipal {
 		} else {
 
 			controladorRealizarPrestamo.inicializa();
+			controladorRealizarPrestamo.setLibros(libros);
+			controladorRealizarPrestamo.setAlumnos(alumnos);
+			controladorRealizarPrestamo.setPrestamos(prestamos);
 			controladorRealizarPrestamo.seleccionarAlumno(tvAlumnos.getSelectionModel().getSelectedItem());
+
 		}
 	}
 	
@@ -299,6 +311,7 @@ public class ControladorVentanaPrincipal {
 			controladorRealizarPrestamo.setAlumnos(alumnos);
 			controladorRealizarPrestamo.setPrestamos(prestamos);
 			controladorRealizarPrestamo.seleccionarLibro(tvLibros.getSelectionModel().getSelectedItem());
+			controladorRealizarPrestamo.setControladorVentanaPrincipal(this);
 
 			Scene escenaRealizarPrestamo = new Scene(raizRealizarPrestamo);
 			prestarLibro.setTitle("Realizar Préstamo");
@@ -310,6 +323,9 @@ public class ControladorVentanaPrincipal {
 		} else {
 
 			controladorRealizarPrestamo.inicializa();
+			controladorRealizarPrestamo.setLibros(libros);
+			controladorRealizarPrestamo.setAlumnos(alumnos);
+			controladorRealizarPrestamo.setPrestamos(prestamos);
 			controladorRealizarPrestamo.seleccionarLibro(tvLibros.getSelectionModel().getSelectedItem());
 		}
 	}
@@ -351,8 +367,11 @@ public class ControladorVentanaPrincipal {
 
 		} else {
 
-			controladorRealizarDevolucion.setPrestamo(tvPrestamoAlumno.getSelectionModel().getSelectedItem());
 			controladorRealizarDevolucion.inicializa();
+			controladorRealizarDevolucion.setPrestamo(tvPrestamoAlumno.getSelectionModel().getSelectedItem());
+			controladorRealizarPrestamo.setLibros(libros);
+			controladorRealizarPrestamo.setAlumnos(alumnos);
+			controladorRealizarPrestamo.setPrestamos(prestamos);
 		}
 	}
 	
