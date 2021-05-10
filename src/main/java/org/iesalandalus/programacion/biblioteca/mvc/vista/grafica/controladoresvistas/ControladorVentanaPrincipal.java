@@ -412,8 +412,12 @@ public class ControladorVentanaPrincipal {
 
 		} else {
 
-			controladorRealizarDevolucion.setPrestamo(tvLibrosPrestados.getSelectionModel().getSelectedItem());
 			controladorRealizarDevolucion.inicializa();
+			controladorRealizarDevolucion.setPrestamo(tvLibrosPrestados.getSelectionModel().getSelectedItem());
+			controladorRealizarPrestamo.setLibros(libros);
+			controladorRealizarPrestamo.setAlumnos(alumnos);
+			controladorRealizarPrestamo.setPrestamos(prestamos);
+			
 		}
 	}
 
@@ -454,8 +458,11 @@ public class ControladorVentanaPrincipal {
 
 		} else {
 
-			controladorRealizarDevolucion.setPrestamo(tvPrestamos.getSelectionModel().getSelectedItem());
 			controladorRealizarDevolucion.inicializa();
+			controladorRealizarDevolucion.setPrestamo(tvPrestamos.getSelectionModel().getSelectedItem());
+			controladorRealizarPrestamo.setLibros(libros);
+			controladorRealizarPrestamo.setAlumnos(alumnos);
+			controladorRealizarPrestamo.setPrestamos(prestamos);
 		}
 	}
 	
