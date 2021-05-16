@@ -2,31 +2,40 @@
 ## Profesor: José Ramón Jiménez Reyes
 ## Alumno: Marta Yebra González
 
-Desde el IES Al-Ándalus nos acaban de dar unos nuevos requisitos a aplicar sobre la última versión que le mostramos y que les gustó bastante. Lo que nos piden es lo siguiente:
+El cliente nos acaba de dar unos nuevos requisitos a aplicar sobre la última versión que le mostramos y que le gustó bastante. Lo que nos pide el cliente es lo siguiente:
 
-- Quieren conservar la interfaz de texto de la aplicación.
-- Quieren también tener una nueva interfaz de usuario gráfica para ejecutar la aplicación.
+- Que la aplicación no almacene los datos en ficheros y que lo haga en una base de datos creada para tal efecto.
 
-Tu tarea consiste en dotar a la aplicación de la tarea anterior de una interfaz gráfica de usuario, utilizando JavaFX. La interfaz se puede diseñar al gusto de cada un@, pero deberá utilizar los componentes más adecuados en cada caso. Cuanto más elaborada esté mayor será la calificación. Para ello debes emplear los diferentes tipos de controles, menús y contenedores que nos proporciona la API de JavaFX. Se pide al menos:
+Los datos de la BD, que es una BD MongoDB, son los siguientes:
 
-- Un menú que nos permita salir de la aplicación o mostrar un cuadro de diálogo "Acerca de..." con información de la autoría de la aplicación y una imagen.
-- La gestión de alumnos permitirá añadir uno nuevo, borrar uno ya existente, realizar búsquedas y mostrar todos los alumnos.
-- La gestión de libros permitirá añadir uno nuevo, borrar uno ya existente, realizar búsquedas y mostrar todos los libros.
-- La gestión de préstamos permitirá realizar un nuevo préstamo, devolver un libro, borrar un préstamo ya existente, realizar búsquedas y - mostrar todas los préstamos, los préstamos realizados por un alumno dado, los préstamos realizados sobre un libro en cuestión, los préstamos realizados en un mes y las estadísticas por cursos para un mes.
+- Servidor: localhost o 127.0.01.
+- Puerto: 27017
+- BD: biblioteca
+- Usuario: biblioteca
+- Contraseña: biblioteca-2021
 
-Por tanto, tu tarea va a consistir en completar los siguientes apartados:
+Tu tarea consiste en dotar a la aplicación de la tarea anterior de un nuevo modelo de datos que en vez de utilizar ficheros para almacenar los datos lo haga haciendo uso de una Base de Datos NoSQL. Se pide al menos:
 
-1. Debes realizar un fork del repositorio de tu tarea anterior en otro nuevo llamado Biblioteca-v4. Dicho repositorio lo clonarás localmente y realizarás las diferentes modificaciones que se piden en esta tarea.
-2. Modifica el fichero de configuración de gradle para que incluya las librerías necesarias para poder trabajar correctamente con JavaFX. Crea un nuevo paquete para la vista gráfica. En principio la ventana principal sólo incluirá el menú adecuado. Cada fichero debe estar en la carpeta adecuada (bien sea un recurso -imagen o .fxml- o un fichero .java). Realiza el commit correspondiente.
-3. Realiza la gestión de alumnos tal y como se indica anteriormente. Realiza el commit correspondiente.
-4. Realiza la gestión de libros tal y como se indica anteriormente. Realiza el commit correspondiente.
-5. Realiza la gestión de préstamos tal y como se indica anteriormente. Realiza el commit correspondiente.
-6. La aplicación principal aceptará como parámetro "-vtexto" o "-vgrafica" y lanzará nuestra aplicación con una interfaz u otra. Si el parámetro pasado a la aplicación no es correcto o no se le pasa parámetro, se lanzará por defecto la aplicación con la interfaz gráfica. Realiza el commit correspondiente y sube los cambios a tu repositorio remoto.
+- Acomodar el proyecto para que gradle gestione la dependencia con el driver para java de MongoDB en su última versión. Además deberás modificar el proyecto para que se puedan ejecutar todas las versiones: ficheros con IU textual, ficheros con IU gráfica, BD con IU textual y BD con IU gráfica, haciendo uso de los parámetros pasados a la aplicación.
+- Gestionar los alumnos para que su persistencia se lleve a cabo por medio de dicha BD.
+- Gestionar los libros para que su persistencia se lleve a cabo por medio de dicha BD.
+- Gestionar los préstamos para que su persistencia se lleve a cabo por medio de dicha BD.
+
+Para ello debes realizar las siguientes acciones:
+
+1. Lo primero que debes hacer es crear un repositorio  en GitHub a partir de tu repositorio de la tarea anterior.
+2. Clona dicho repositorio localmente para empezar a modicfiarlo. Modifica el fichero README.md para que indique tus datos y los de esta tarea. Realiza tu primer commit.
+3. Instala localmente el servidor MongoDB y crea la base datos y como propietario el usuario y la contraseña que se indican.
+4. Realiza los cambios necesarios para que el proyecto pueda lanzar la aplicación eligiendo tanto la vista como el modelo (la fuente de datos) por parámetros. Realiza el commit correspondiente.
+5. Haz que la gestión de alumnos utilice la persistencia en la BD. Realiza el commit correspondiente.
+6. Haz que la gestión de libros utilice la persistencia en la BD. Realiza el commit correspondiente.
+7. Haz que la gestión de préstamos utilice la persistencia en la BD. Realiza el commit correspondiente.
 
 ###### Se valorará:
 - La nomenclatura del repositorio de GitHub y del archivo entregado sigue las indicaciones de entrega.
 - La indentación debe ser correcta en cada uno de los apartados.
-- El nombre de los identificadores debe ser adecuado.
+- El nombre de las variables debe ser adecuado.
+- El proyecto debe pasar todas las pruebas que van en el esqueleto del mismo y toda entrada del programa será validada para evitar que el programa termine abruptamente debido a una excepción.
 - Se deben utilizar los comentarios adecuados.
 - Se valorará la corrección ortográfica tanto en los comentarios como en los mensajes que se muestren al usuario.
 
